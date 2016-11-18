@@ -3,9 +3,11 @@ FROM centos:7
 #install Package
 RUN yum install -y wget vim
 RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-RUN yum install -y epel-release
 RUN wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
-RUN yum install -y openssh-server lrzsz unzip screen htop net-tools bind-utils python-pip
+RUN yum -y groupinstall development
+RUN yum install -y openssh-server lrzsz unzip net-tools bind-utils python-pip
+RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm
+RUN yum -y install python35u-3.5.2 python35u-pip python35u-devel
 RUN mkdir -p ~/.pip
 ADD pip.conf ~/.pip
 RUN pip install -U pip
