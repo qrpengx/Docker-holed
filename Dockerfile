@@ -6,15 +6,12 @@ RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Cen
 RUN wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 RUN wget -O /root/get-pip.py https://bootstrap.pypa.io/get-pip.py
 RUN yum -y groupinstall development
-RUN yum install -y openssh-server lrzsz unzip net-tools bind-utils python-pip python34
-RUN python3 /root/get-pip.py
-#RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-#RUN yum -y install python35u-3.5.2 python35u-pip python35u-devel
+RUN yum install -y openssh-server lrzsz unzip net-tools bind-utils python-pip
 RUN mkdir -p ~/.pip
 ADD pip.conf ~/.pip
 RUN pip install -U pip
 RUN pip install -U shadowsocks
-RUN pip3 install -U supervisor
+RUN pip install -U supervisor
 
 #set sshd
 RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
