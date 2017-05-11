@@ -14,7 +14,7 @@ RUN mkdir -p ~/.pip
 ADD pip.conf ~/.pip
 RUN pip install -U pip
 RUN pip install -U shadowsocks
-RUN pip install -U supervisor
+RUN pip3 install -U supervisor
 
 #set sshd
 RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
